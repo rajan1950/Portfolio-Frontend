@@ -1,74 +1,18 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import FloatingNav from './components/common/FloatingNav'
-import HomeSection from './components/sections/HomeSection'
-import LinksSection from './components/sections/LinksSection'
-import ProjectsSection from './components/sections/ProjectsSection'
-import SkillsSection from './components/sections/SkillsSection'
-import SummarySection from './components/sections/SummarySection'
 import { navItems } from './constants/navigation'
 import { portfolioData } from './data/portfolioData'
 import { useActiveSection } from './hooks/useActiveSection'
 import { fetchProjects, fetchSkills } from './services/portfolioApi'
-
-const LEVEL_TO_SCORE = {
-  beginner: 35,
-  intermediate: 60,
-  advanced: 85,
-  expert: 95,
-}
-
-function mapBackendProjects(projects) {
-  return projects.map((project) => {
-    const techStack = Array.isArray(project.techStack) ? project.techStack : []
-
-    return {
-      title: project.title,
-      subtitle: project.subtitle || 'Backend-managed portfolio project',
-      description: project.description,
-      objective:
-        project.objective ||
-        'Deliver a polished, production-ready project experience with clear business value.',
-      features:
-        Array.isArray(project.features) && project.features.length > 0
-          ? project.features
-          : ['Scalable API architecture', 'Data-driven portfolio content', 'Clean code structure'],
-      techStack,
-      skillsUsed: techStack,
-      links: {
-        live: project.liveLink || '#',
-        github: project.githubLink || '#',
-      },
-    }
-  })
-}
-
-function mapBackendSkills(skills) {
-  const categorySet = new Set()
-  const tools = []
-  const languages = []
-
-  skills.forEach((skill) => {
-    tools.push(skill.name)
-
-    if (skill.category) {
-      categorySet.add(skill.category)
-    }
-
-    const normalizedLevel = String(skill.level || 'intermediate').toLowerCase()
-
-    languages.push({
-      name: skill.name,
-      level: LEVEL_TO_SCORE[normalizedLevel] || 60,
-    })
-  })
-
-  return {
-    highlights: categorySet.size > 0 ? [...categorySet] : portfolioData.skills.highlights,
-    tools,
-    languages,
-  }
-}
+import Navbar from './components/common/Navbar'
+import ScrollProgress from './components/common/ScrollProgress'
+import EnhancedHeroSection from './components/sections/EnhancedHeroSection'
+import EnhancedAboutSection from './components/sections/EnhancedAboutSection'
+import EnhancedSkillsSection from './components/sections/EnhancedSkillsSection'
+import EnhancedProjectsSection from './components/sections/EnhancedProjectsSection'
+import EnhancedExperienceSection from './components/sections/EnhancedExperienceSection'
+import EnhancedContactSection from './components/sections/EnhancedContactSection'
+import EnhancedFooter from './components/sections/EnhancedFooter'
 
 function App() {
   const activeSection = useActiveSection(navItems)
@@ -76,27 +20,6 @@ function App() {
   const [projects, setProjects] = useState(portfolioData.projects)
   const [skills, setSkills] = useState(portfolioData.skills)
   const manualActiveTimeoutRef = useRef(null)
-
-  const summaryCards = useMemo(() => {
-    return [
-      {
-        title: 'Education',
-        items: portfolioData.education.map(
-          (item) => `${item.program} - ${item.institution} (${item.years})`,
-        ),
-      },
-      {
-        title: 'Experience',
-        items: portfolioData.experience.map(
-          (item) => `${item.role} - ${item.company} (${item.duration})`,
-        ),
-      },
-      {
-        title: 'Certificates',
-        items: portfolioData.certificates,
-      },
-    ]
-  }, [])
 
   useEffect(() => {
     let isMounted = true
@@ -112,18 +35,13 @@ function App() {
           return
         }
 
-        const apiProjects = Array.isArray(projectsResponse?.data)
-          ? projectsResponse.data
-          : []
-
-        const apiSkills = Array.isArray(skillsResponse?.data) ? skillsResponse.data : []
-
-        if (apiProjects.length > 0) {
-          setProjects(mapBackendProjects(apiProjects))
+        // Update state if API returns data
+        if (Array.isArray(projectsResponse?.data) && projectsResponse.data.length > 0) {
+          setProjects(projectsResponse.data)
         }
 
-        if (apiSkills.length > 0) {
-          setSkills(mapBackendSkills(apiSkills))
+        if (Array.isArray(skillsResponse?.data) && skillsResponse.data.length > 0) {
+          setSkills(skillsResponse.data)
         }
       } catch (error) {
         console.warn('Using fallback static portfolio data:', error.message)
@@ -169,29 +87,27 @@ function App() {
     <div className="app-shell">
       <motion.div className="glow glow-left" aria-hidden="true" />
       <motion.div className="glow glow-right" aria-hidden="true" />
+  <ScrollProgress />
 
-      <main className="container page-grid">
-        <HomeSection profile={portfolioData.profile} />
-        <SummarySection summary={portfolioData.summary} summaryCards={summaryCards} />
-        <ProjectsSection projects={projects} />
-        <SkillsSection
-          skills={skills}
-          education={portfolioData.education}
-          experience={portfolioData.experience}
-          certificates={portfolioData.certificates}
-        />
-        <LinksSection
-          links={portfolioData.links}
-          profile={portfolioData.profile}
-          footer={portfolioData.footer}
-        />
-      </main>
-
-      <FloatingNav
-        items={navItems}
+      <Navbar
+        navItems={navItems}
         activeSection={resolvedActiveSection}
         onNavigate={scrollToSection}
       />
+
+      <main>
+        <EnhancedHeroSection profile={portfolioData.profile} data={portfolioData} />
+        <EnhancedAboutSection profile={portfolioData.profile} summary={portfolioData.summary} />
+        <EnhancedSkillsSection skills={skills} />
+        <EnhancedProjectsSection projects={projects} />
+        <EnhancedExperienceSection
+          experience={portfolioData.experience}
+          education={portfolioData.education}
+          certificates={Array.isArray(portfolioData.certificates) ? portfolioData.certificates : []}
+        />
+        <EnhancedContactSection profile={portfolioData.profile} data={portfolioData} />
+        <EnhancedFooter data={portfolioData} />
+      </main>
     </div>
   )
 }
