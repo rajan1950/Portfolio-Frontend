@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { FiCode, FiHeart, FiMail } from 'react-icons/fi'
 import { FaRocket, FaGithub } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
@@ -114,26 +115,26 @@ function EnhancedAboutSection({ profile, summary }) {
 
               {/* Social Icons */}
               <div className="flex gap-4 mt-8">
-                <a
-                  href="#"
+                <Link
+                  to="#"
                   className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 hover:border-[#ffbd13] hover:text-[#ffbd13] transition-all duration-300"
                 >
                   <FaGithub className="text-xl" />
-                </a>
+                </Link>
 
-                <a
-                  href="#"
+                <Link
+                  to="#"
                   className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 hover:border-[#ffbd13] hover:text-[#ffbd13] transition-all duration-300"
                 >
                   <FiMail className="text-xl" />
-                </a>
+                </Link>
 
-                <a
-                  href="#"
+                <Link
+                  to="#"
                   className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 hover:border-[#ffbd13] hover:text-[#ffbd13] transition-all duration-300"
                 >
                   <MdEmail className="text-xl" />
-                </a>
+                </Link>
               </div>
             </div>
           </motion.div>

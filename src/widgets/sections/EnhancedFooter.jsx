@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { FiArrowUp } from 'react-icons/fi'
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa'
+
+const MotionLink = motion(Link)
 
 function EnhancedFooter({ data }) {
   const scrollToTop = () => {
@@ -49,14 +52,14 @@ function EnhancedFooter({ data }) {
                 { label: 'Projects', href: '#projects' },
                 { label: 'Contact', href: '#contact' },
               ].map((link) => (
-                <motion.a
+                <MotionLink
                   key={link.label}
-                  href={link.href}
+                  to={link.href}
                   className="block text-sm text-[#d7d3cc] hover:text-[#ffbd13] transition-colors duration-300"
                   whileHover={{ x: 5 }}
                 >
                   {link.label}
-                </motion.a>
+                </MotionLink>
               ))}
             </nav>
           </div>
