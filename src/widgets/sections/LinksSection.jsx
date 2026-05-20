@@ -1,5 +1,5 @@
-import LogoBadge from '../common/LogoBadge'
-import { MotionItem, MotionSection } from '../common/MotionFrame'
+import LogoBadge from '../../shared/ui/LogoBadge'
+import { MotionItem, MotionSection } from '../../shared/ui/MotionFrame'
 
 function LinksSection({ links, profile, footer }) {
   const socialItems = Array.isArray(links.social)

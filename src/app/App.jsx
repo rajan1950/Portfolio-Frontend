@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { navItems } from './constants/navigation'
-import { portfolioData } from './data/portfolioData'
-import { useActiveSection } from './hooks/useActiveSection'
-import { fetchProjects, fetchSkills } from './services/portfolioApi'
-import Navbar from './components/common/Navbar'
-import ScrollProgress from './components/common/ScrollProgress'
-import EnhancedHeroSection from './components/sections/EnhancedHeroSection'
-import EnhancedAboutSection from './components/sections/EnhancedAboutSection'
-import EnhancedSkillsSection from './components/sections/EnhancedSkillsSection'
-import EnhancedProjectsSection from './components/sections/EnhancedProjectsSection'
-import EnhancedExperienceSection from './components/sections/EnhancedExperienceSection'
-import EnhancedContactSection from './components/sections/EnhancedContactSection'
-import EnhancedFooter from './components/sections/EnhancedFooter'
+import { navItems } from '../shared/config/navigation'
+import { portfolioData } from '../shared/data/portfolioData'
+import { useActiveSection } from '../shared/hooks/useActiveSection'
+import { fetchProjects, fetchSkills } from '../shared/api/portfolioApi'
+import Navbar from '../shared/ui/Navbar'
+import ScrollProgress from '../shared/ui/ScrollProgress'
+import EnhancedHeroSection from '../widgets/sections/EnhancedHeroSection'
+import EnhancedAboutSection from '../widgets/sections/EnhancedAboutSection'
+import EnhancedSkillsSection from '../widgets/sections/EnhancedSkillsSection'
+import EnhancedProjectsSection from '../widgets/sections/EnhancedProjectsSection'
+import EnhancedExperienceSection from '../widgets/sections/EnhancedExperienceSection'
+import EnhancedContactSection from '../widgets/sections/EnhancedContactSection'
+import EnhancedFooter from '../widgets/sections/EnhancedFooter'
 
 function App() {
   const activeSection = useActiveSection(navItems)
@@ -87,7 +87,7 @@ function App() {
     <div className="app-shell">
       <motion.div className="glow glow-left" aria-hidden="true" />
       <motion.div className="glow glow-right" aria-hidden="true" />
-  <ScrollProgress />
+      <ScrollProgress />
 
       <Navbar
         navItems={navItems}

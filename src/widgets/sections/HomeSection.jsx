@@ -1,11 +1,11 @@
-import InfoChip from '../common/InfoChip'
-import { MotionItem, MotionSection } from '../common/MotionFrame'
+import InfoChip from '../../shared/ui/InfoChip'
+import { MotionItem, MotionSection } from '../../shared/ui/MotionFrame'
 import {
   EnvelopeIcon,
   LinkedInIcon,
   LocationIcon,
   PhoneIcon,
-} from '../common/Icons'
+} from '../../shared/ui/Icons'
 
 function HomeSection({ profile }) {
   return (

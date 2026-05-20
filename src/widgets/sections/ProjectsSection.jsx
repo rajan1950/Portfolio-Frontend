@@ -1,4 +1,4 @@
-import { MotionItem, MotionSection } from '../common/MotionFrame'
+import { MotionItem, MotionSection } from '../../shared/ui/MotionFrame'
 
 function ProjectsSection({ projects }) {
   return (
