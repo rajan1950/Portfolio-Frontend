@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { FiCode, FiPenTool, FiSettings } from 'react-icons/fi'
 
 function EnhancedSkillsSection({ skills }) {
   // Categorize skills
@@ -26,21 +27,21 @@ function EnhancedSkillsSection({ skills }) {
   const skillCategories = [
     {
       title: 'Frontend',
-      icon: '🎨',
+      icon: FiCode,
       skills: frontend,
       gradient: 'from-blue-500/20 to-blue-600/10',
       borderColor: 'border-blue-500/30',
     },
     {
       title: 'Styling & Design',
-      icon: '✨',
+      icon: FiPenTool,
       skills: styling,
       gradient: 'from-yellow-500/20 to-yellow-600/10',
       borderColor: 'border-yellow-500/30',
     },
     {
       title: 'Backend & Tooling',
-      icon: '⚙️',
+      icon: FiSettings,
       skills: backend,
       gradient: 'from-purple-500/20 to-purple-600/10',
       borderColor: 'border-purple-500/30',
@@ -114,42 +115,45 @@ function EnhancedSkillsSection({ skills }) {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {skillCategories.map((category, idx) => (
-            <motion.div
-              key={idx}
-              variants={cardVariants}
-              className={`relative group p-8 rounded-2xl backdrop-blur-lg bg-gradient-to-br ${category.gradient} border ${category.borderColor} hover:border-[#ffbd13]/50 transition-all duration-500`}
-              whileHover={{ y: -10, scale: 1.02 }}
-            >
-              {/* Glow effect on hover */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{
-                  background: `radial-gradient(circle at center, rgba(255,189,19,0.1) 0%, transparent 70%)`,
-                }}
-              />
+          {skillCategories.map((category, idx) => {
+            const Icon = category.icon
 
-              {/* Card Content */}
-              <div className="relative z-10">
-                <div className="text-4xl mb-4">{category.icon}</div>
-                <h3 className="text-2xl font-bold text-[#f8f7f5] mb-2">{category.title}</h3>
-                
-                {/* Skills List with Progress Bars */}
-                <div className="mt-8 space-y-6">
-                  {category.skills.map((skill, skillIdx) => (
-                    <SkillProgressBar key={skillIdx} skill={skill} />
-                  ))}
-                </div>
-              </div>
-
-              {/* Border glow on hover */}
+            return (
               <motion.div
-                className="absolute inset-0 rounded-2xl pointer-events-none"
-                initial={{ boxShadow: 'inset 0 0 0px rgba(255,189,19,0)' }}
-                whileHover={{ boxShadow: 'inset 0 0 20px rgba(255,189,19,0.1)' }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.div>
-          ))}
+                key={idx}
+                variants={cardVariants}
+                className={`relative group p-8 rounded-2xl backdrop-blur-lg bg-gradient-to-br ${category.gradient} border ${category.borderColor} hover:border-[#ffbd13]/50 transition-all duration-500`}
+                whileHover={{ y: -10, scale: 1.02 }}
+              >
+                <div className="relative z-10">
+                  <Icon className="text-4xl text-[#ffbd13] mb-4" />
+                  <h3 className="text-2xl font-bold text-[#f8f7f5] mb-2">{category.title}</h3>
+
+                  {/* Skills List with Progress Bars */}
+                  <div className="mt-8 space-y-6">
+                    {category.skills.map((skill, skillIdx) => (
+                      <SkillProgressBar key={skillIdx} skill={skill} />
+                    ))}
+                  </div>
+                </div>
+              {/* Glow effect on hover */}
+                <div
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    background: `radial-gradient(circle at center, rgba(255,189,19,0.1) 0%, transparent 70%)`,
+                  }}
+                />
+
+                {/* Border glow on hover */}
+                <motion.div
+                  className="absolute inset-0 rounded-2xl pointer-events-none"
+                  initial={{ boxShadow: 'inset 0 0 0px rgba(255,189,19,0)' }}
+                  whileHover={{ boxShadow: 'inset 0 0 20px rgba(255,189,19,0.1)' }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
+            )
+          })}
         </motion.div>
 
         {/* Tools Section */}
