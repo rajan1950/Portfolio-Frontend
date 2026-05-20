@@ -126,9 +126,9 @@ export const portfolioData = {
     ],
 
     languages: [
-      { name: 'English', level: 55 },
       { name: 'Hindi', level: 90 },
       { name: 'Gujarati', level: 95 },
+      { name: 'English', level: 55 },
     ],
   },
 
@@ -143,16 +143,10 @@ export const portfolioData = {
 
   experience: [
     {
-      role: 'Frontend Developer Intern',
-      company: 'Company Name',
-      duration: 'Jan 2026 - Apr 2026',
-      summary: 'Built responsive interfaces and collaborated on production features.',
-    },
-    {
-      role: 'Web Developer Intern',
-      company: 'Company Name',
-      duration: 'Jun 2025 - Aug 2025',
-      summary: 'Created reusable UI components and improved page performance.',
+      role: 'MERN Stack Developer Intern',
+      company: 'Grownited Private Limited',
+      duration: 'Jan 19, 2026 - Apr 17, 2026',
+      summary: 'Completed comprehensive internship focusing on Project Understanding & Requirement Analysis, Technical Documentation, Learning New Technologies, Development Activities, Testing & Quality Assurance, and Soft Skills. Demonstrated diligence, work ethic, and inquisitiveness throughout the internship period.',
     },
   ],
 
