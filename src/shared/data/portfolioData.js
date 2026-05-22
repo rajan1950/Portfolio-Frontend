@@ -9,6 +9,7 @@ export const portfolioData = {
     email: 'rajandobariya6@gmail.com',
     phone: '+91 8320161950',
     linkedin: 'https://www.linkedin.com/in/dobariya-rajan-980b13328/',
+    resumeUrl: '/resume.pdf',
   },
 
   summary: {
@@ -148,12 +149,19 @@ export const portfolioData = {
       duration: 'Jan 19, 2026 - Apr 17, 2026',
       summary: 'Completed comprehensive internship focusing on Project Understanding & Requirement Analysis, Technical Documentation, Learning New Technologies, Development Activities, Testing & Quality Assurance, and Soft Skills. Demonstrated diligence, work ethic, and inquisitiveness throughout the internship period.',
     },
+    {
+      role: 'Web Development Intern',
+      company: 'Elevate Labs',
+      duration: 'July 02, 2025 - July 16, 2025',
+      summary: 'Completed a web development internship with a focus on learning and applying web technologies. Gained hands-on experience in frontend and backend development, contributing to real projects and enhancing technical skills.',
+    }
   ],
 
   certificates: [
-    'AWS Cloud Practitioner (or target certification)',
-    'Responsive Web Design Certification',
+    'MERN Stack Development Certification',
     'Backend Development Certification',
+    'Full-Stack Development Certification',
+    'WebDevelopment Internship Certificate',
   ],
 
   links: {
