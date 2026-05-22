@@ -19,7 +19,25 @@ function App() {
   const [manualActiveSection, setManualActiveSection] = useState('')
   const [projects, setProjects] = useState(portfolioData.projects)
   const [skills, setSkills] = useState(portfolioData.skills)
+  const [theme, setTheme] = useState(() => {
+    if (typeof window === 'undefined') {
+      return 'dark'
+    }
+
+    const storedTheme = window.localStorage.getItem('theme')
+    if (storedTheme) {
+      return storedTheme
+    }
+
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+  })
   const manualActiveTimeoutRef = useRef(null)
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    document.documentElement.style.colorScheme = theme
+    window.localStorage.setItem('theme', theme)
+  }, [theme])
 
   useEffect(() => {
     let isMounted = true
@@ -93,6 +111,9 @@ function App() {
         navItems={navItems}
         activeSection={resolvedActiveSection}
         onNavigate={scrollToSection}
+        resumeUrl={portfolioData.profile?.resumeUrl}
+        theme={theme}
+        onToggleTheme={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))}
       />
 
       <main>
