@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { FiArrowRight, FiDownload } from 'react-icons/fi'
+import { FiArrowRight, FiEye } from 'react-icons/fi'
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa'
 
 function EnhancedHeroSection({ profile, data }) {
@@ -121,7 +121,7 @@ function EnhancedHeroSection({ profile, data }) {
         {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+          className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center mb-12"
         >
           <motion.a
             href="mailto:rajandobariya6@gmail.com"
@@ -133,15 +133,13 @@ function EnhancedHeroSection({ profile, data }) {
             <FiArrowRight className="w-5 h-5" />
           </motion.a>
           <motion.a
-            href={data?.links?.github || '#'}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[rgba(255,255,255,0.1)] text-[#f8f7f5] rounded-lg font-semibold border border-[rgba(255,255,255,0.2)] hover:border-[#ffbd13] hover:bg-[rgba(255,189,19,0.1)] transition-all duration-300"
+            href="#projects"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-[#f8f7f5] rounded-lg font-semibold border border-transparent hover:border-[rgba(255,255,255,0.25)] hover:text-[#ffbd13] transition-all duration-300"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FiDownload className="w-5 h-5" />
             View Projects
+            <FiArrowRight className="w-5 h-5" />
           </motion.a>
         </motion.div>
 
