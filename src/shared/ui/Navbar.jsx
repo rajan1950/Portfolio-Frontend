@@ -39,8 +39,8 @@ function Navbar({ navItems, activeSection, onNavigate, resumeUrl, theme, onToggl
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <div className="w-10 h-10 bg-gradient-to-br from-[#ffbd13] to-[#ffde76] rounded-lg flex items-center justify-center shadow-lg shadow-[rgba(255,189,19,0.3)]">
-            <span className="text-sm font-bold text-[#101017]">RD</span>
+          <div className="w-10 h-10 rounded-lg flex items-center justify-center shadow-lg shadow-[rgba(255,189,19,0.3)]">
+            <img src="/logo-r.svg" alt="Rajan logo" className="w-10 h-10" />
           </div>
           <span className="hidden sm:block text-lg font-bold text-[#f8f7f5]">Rajan</span>
         </motion.div>
