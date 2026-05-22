@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FiMenu, FiX } from 'react-icons/fi'
+import ThemeToggle from './ThemeToggle'
 
-function Navbar({ navItems, activeSection, onNavigate }) {
+function Navbar({ navItems, activeSection, onNavigate, resumeUrl, theme, onToggleTheme }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -71,7 +72,8 @@ function Navbar({ navItems, activeSection, onNavigate }) {
         </div>
 
         {/* CTA Button */}
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center gap-3">
+          <ThemeToggle theme={theme} onToggle={onToggleTheme} />
           <motion.a
             href="mailto:rajandobariya6@gmail.com"
             className="px-6 py-2.5 bg-gradient-to-r from-[#ffbd13] to-[#ffde76] text-[#101017] rounded-lg font-semibold text-sm hover:shadow-lg hover:shadow-[rgba(255,189,19,0.4)] transition-all duration-300"
@@ -83,17 +85,20 @@ function Navbar({ navItems, activeSection, onNavigate }) {
         </div>
 
         {/* Mobile Menu Button */}
-        <motion.button
-          className="md:hidden p-2 rounded-lg hover:bg-[rgba(255,255,255,0.1)]"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          whileTap={{ scale: 0.95 }}
-        >
-          {isMobileMenuOpen ? (
-            <FiX className="w-6 h-6 text-[#f8f7f5]" />
-          ) : (
-            <FiMenu className="w-6 h-6 text-[#f8f7f5]" />
-          )}
-        </motion.button>
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+          <motion.button
+            className="p-2 rounded-lg hover:bg-[rgba(255,255,255,0.1)]"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            whileTap={{ scale: 0.95 }}
+          >
+            {isMobileMenuOpen ? (
+              <FiX className="w-6 h-6 text-[#f8f7f5]" />
+            ) : (
+              <FiMenu className="w-6 h-6 text-[#f8f7f5]" />
+            )}
+          </motion.button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -119,7 +124,7 @@ function Navbar({ navItems, activeSection, onNavigate }) {
           ))}
           <motion.a
             href="mailto:rajandobariya6@gmail.com"
-            className="block w-full text-center px-4 py-3 bg-gradient-to-r from-[#ffbd13] to-[#ffde76] text-[#101017] rounded-lg font-semibold mt-4"
+            className="block w-full text-center px-4 py-3 bg-gradient-to-r from-[#ffbd13] to-[#ffde76] text-[#101017] rounded-lg font-semibold mt-3"
             whileTap={{ scale: 0.95 }}
           >
             Hire Me
