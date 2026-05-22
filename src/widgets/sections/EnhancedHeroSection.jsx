@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FiArrowRight, FiEye } from 'react-icons/fi'
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa'
+import HeroOrbsCanvas from '../../shared/ui/HeroOrbsCanvas'
 
 function EnhancedHeroSection({ profile, data }) {
   const [displayedText, setDisplayedText] = useState('')
@@ -52,6 +53,7 @@ function EnhancedHeroSection({ profile, data }) {
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 lg:px-8">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <HeroOrbsCanvas />
         <motion.div
           className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-[#ffbd13] via-[#7a3c1d] to-transparent rounded-full blur-3xl opacity-20"
           animate={{
