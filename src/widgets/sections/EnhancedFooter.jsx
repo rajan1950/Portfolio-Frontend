@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FiArrowUp } from 'react-icons/fi'
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa'
 
-const MotionLink = motion(Link)
+const MotionLink = motion.create(Link)
 
 function EnhancedFooter({ data }) {
   const scrollToTop = () => {
@@ -109,9 +109,7 @@ function EnhancedFooter({ data }) {
         >
           {/* Copyright */}
           <div className="text-sm text-[#d7d3cc] text-center sm:text-left">
-            <p>
-              © {currentYear} Rajan Dobariya. All rights reserved. Built with React, Tailwind CSS & Framer Motion.
-            </p>
+            <p>© {currentYear} Rajan Dobariya. All rights reserved.</p>
           </div>
 
           {/* Scroll to Top Button */}

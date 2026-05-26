@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { navItems } from '../shared/config/navigation'
 import { portfolioData } from '../shared/data/portfolioData'
 import { useActiveSection } from '../shared/hooks/useActiveSection'
-import { fetchProjects, fetchSkills } from '../shared/api/portfolioApi'
 import Navbar from '../shared/ui/Navbar'
 import ScrollProgress from '../shared/ui/ScrollProgress'
 import EnhancedHeroSection from '../widgets/sections/EnhancedHeroSection'
@@ -38,40 +37,6 @@ function App() {
     document.documentElement.style.colorScheme = theme
     window.localStorage.setItem('theme', theme)
   }, [theme])
-
-  useEffect(() => {
-    let isMounted = true
-
-    const loadPortfolioData = async () => {
-      try {
-        const [projectsResponse, skillsResponse] = await Promise.all([
-          fetchProjects(),
-          fetchSkills(),
-        ])
-
-        if (!isMounted) {
-          return
-        }
-
-        // Update state if API returns data
-        if (Array.isArray(projectsResponse?.data) && projectsResponse.data.length > 0) {
-          setProjects(projectsResponse.data)
-        }
-
-        if (Array.isArray(skillsResponse?.data) && skillsResponse.data.length > 0) {
-          setSkills(skillsResponse.data)
-        }
-      } catch (error) {
-        console.warn('Using fallback static portfolio data:', error.message)
-      }
-    }
-
-    loadPortfolioData()
-
-    return () => {
-      isMounted = false
-    }
-  }, [])
 
   const scrollToSection = (id) => {
     setManualActiveSection(id)
@@ -111,7 +76,6 @@ function App() {
         navItems={navItems}
         activeSection={resolvedActiveSection}
         onNavigate={scrollToSection}
-        resumeUrl={portfolioData.profile?.resumeUrl}
         theme={theme}
         onToggleTheme={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))}
       />

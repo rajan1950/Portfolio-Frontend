@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { FiMenu, FiX } from 'react-icons/fi'
 import ThemeToggle from './ThemeToggle'
 
-function Navbar({ navItems, activeSection, onNavigate, resumeUrl, theme, onToggleTheme }) {
+function Navbar({ navItems, activeSection, onNavigate, theme, onToggleTheme }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -14,6 +14,17 @@ function Navbar({ navItems, activeSection, onNavigate, resumeUrl, theme, onToggl
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
   const handleNavClick = (id) => {
@@ -32,24 +43,25 @@ function Navbar({ navItems, activeSection, onNavigate, resumeUrl, theme, onToggl
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Logo */}
-        <motion.div
-          className="flex items-center gap-2"
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        <motion.button
+          type="button"
+          className="flex items-center gap-2 shrink-0"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => handleNavClick('home')}
         >
           <div className="w-10 h-10 rounded-lg flex items-center justify-center shadow-lg shadow-[rgba(255,189,19,0.3)]">
             <img src="/logo-r.svg" alt="Rajan logo" className="w-10 h-10" />
           </div>
           <span className="hidden sm:block text-lg font-bold text-[#f8f7f5]">Rajan</span>
-        </motion.div>
+        </motion.button>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-1 flex-1 justify-center">
           {navItems.map((item) => (
             <motion.button
               key={item.id}
+              type="button"
               onClick={() => handleNavClick(item.id)}
               className={`px-4 py-2 rounded-lg transition-all duration-300 text-sm font-medium relative ${
                 activeSection === item.id
@@ -71,8 +83,7 @@ function Navbar({ navItems, activeSection, onNavigate, resumeUrl, theme, onToggl
           ))}
         </div>
 
-        {/* CTA Button */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-3 shrink-0">
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />
           <motion.a
             href="mailto:rajandobariya6@gmail.com"
@@ -84,13 +95,15 @@ function Navbar({ navItems, activeSection, onNavigate, resumeUrl, theme, onToggl
           </motion.a>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="md:hidden flex items-center gap-2 shrink-0">
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />
           <motion.button
+            type="button"
             className="p-2 rounded-lg hover:bg-[rgba(255,255,255,0.1)]"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             whileTap={{ scale: 0.95 }}
+            aria-expanded={isMobileMenuOpen}
+            aria-label="Toggle navigation menu"
           >
             {isMobileMenuOpen ? (
               <FiX className="w-6 h-6 text-[#f8f7f5]" />
@@ -108,10 +121,11 @@ function Navbar({ navItems, activeSection, onNavigate, resumeUrl, theme, onToggl
         transition={{ duration: 0.3 }}
         className="md:hidden overflow-hidden"
       >
-        <div className="px-4 py-4 space-y-2 backdrop-blur-lg bg-[rgba(16,16,23,0.95)] border-t border-[rgba(255,255,255,0.1)]">
+        <div className="px-4 pb-4 pt-2 space-y-2 backdrop-blur-lg bg-[rgba(16,16,23,0.95)] border-t border-[rgba(255,255,255,0.1)]">
           {navItems.map((item) => (
             <button
               key={item.id}
+              type="button"
               onClick={() => handleNavClick(item.id)}
               className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${
                 activeSection === item.id
