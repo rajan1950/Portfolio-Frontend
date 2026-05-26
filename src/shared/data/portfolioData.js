@@ -22,47 +22,40 @@ export const portfolioData = {
 
   projects: [
     {
-      title: 'FETCH API DATA VIEWER',
-      subtitle: 'Fetch and display real-time data from a public API',
+      title: 'Car Scout',
+      subtitle: 'Vehicle search & comparison platform',
+      date: '2026-04',
       description:
-        'This project demonstrates how to fetch real-time data from a public API using the Fetch API and dynamically display it on the frontend. It helps users view external data in a clean and interactive UI, making it useful for learning API integration and frontend data handling.',
-      objective:
-        'To build a dynamic web application that retrieves and displays external API data efficiently using modern JavaScript.',
-      features: [
-        'Fetch real-time data from a public API endpoint',
-        'Asynchronous data handling using Fetch API (Promises/Async-Await)',
-        'Dynamic UI rendering with clean and responsive design',
-      ],
-      techStack: ['HTML', 'CSS', 'JavaScript (Fetch API)'],
-      skillsUsed: [
-        'API Integration',
-        'Asynchronous JavaScript',
-        'DOM Manipulation',
-        'Error Handling',
-      ],
-      links: {
-        live: '#',
-        github: 'https://github.com/rajan1950/Fetch-and-Display-Data-from-a-Public-API-Using-Fetch-API.git',
-      },
+        'Car Scout is a marketplace-style web app that lets users search, filter, and compare cars from multiple dealers. Includes saved searches and comparison tables.',
+      objective: 'Provide a smooth car discovery experience with rich filtering and comparisons.',
+      features: ['Advanced search & filters', 'Comparison view', 'Saved searches', 'Dealer listings'],
+      techStack: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS'],
+      skillsUsed: ['Search UX', 'Performance', 'API design'],
+      links: { live: '#', github: 'https://github.com/rajan1950/car-scout' },
     },
     {
-      title: 'PROJECT TWO - LANDING EXPERIENCE',
-      subtitle: 'A premium responsive website project',
+      title: 'R-Square',
+      subtitle: 'Real-estate listings & analytics',
+      date: '2025-09',
       description:
-        'Highlight design choices, animation approach, and responsiveness work across desktop and mobile.',
-      objective:
-        'Build a conversion-focused and visually polished front-end experience.',
-      features: [
-        'Responsive layout for all devices',
-        'Reusable components and clean structure',
-        'Fast loading and accessibility-friendly design',
-      ],
-      techStack: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
-      skillsUsed: ['Frontend Engineering', 'UX Thinking', 'Animation Design'],
-      links: {
-        live: '#',
-        github: '#',
-      },
+        'R-Square aggregates property listings and provides simple analytics for buyers and agents, with map integrations and saved favourites.',
+      objective: 'Help users discover and evaluate properties quickly.',
+      features: ['Map integration', 'Saved favourites', 'Basic analytics'],
+      techStack: ['React', 'Express', 'Postgres'],
+      skillsUsed: ['Data visualization', 'Maps', 'Backend APIs'],
+      links: { live: '#', github: 'https://github.com/rajan1950/r-square' },
+    },
+    {
+      title: 'Portfolio Website',
+      subtitle: 'This site — built with React, Vite and Tailwind',
+      date: '2026-05',
+      description:
+        'My personal portfolio and CV site showcasing projects, experience, and contact information. Built with performance and accessibility in mind.',
+      objective: 'Showcase professional experience and selected projects.',
+      features: ['Responsive design', 'Light/Dark theme', 'Animated sections', 'Accessible markup'],
+      techStack: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+      skillsUsed: ['Frontend Architecture', 'UI Design', 'Performance'],
+      links: { live: '/', github: 'https://github.com/rajan1950/frontend_portfolio' },
     },
   ],
 
