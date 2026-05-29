@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FiArrowRight, FiEye } from 'react-icons/fi'
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa'
-import HeroOrbsCanvas from '../../shared/ui/HeroOrbsCanvas'
+import HeroOrbsCanvas from '../shared/ui/HeroOrbsCanvas'
 
 function EnhancedHeroSection({ profile, data }) {
   const [displayedText, setDisplayedText] = useState('')
