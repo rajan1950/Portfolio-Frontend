@@ -85,14 +85,15 @@ function Navbar({ navItems, activeSection, onNavigate, theme, onToggleTheme }) {
 
         <div className="hidden md:flex items-center gap-3 shrink-0">
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />
-          <motion.a
-            href="mailto:rajandobariya6@gmail.com"
+          <motion.button
+            type="button"
+            onClick={() => handleNavClick('contact')}
             className="px-6 py-2.5 bg-gradient-to-r from-[#ffbd13] to-[#ffde76] text-[#101017] rounded-lg font-semibold text-sm hover:shadow-lg hover:shadow-[rgba(255,189,19,0.4)] transition-all duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Hire Me
-          </motion.a>
+          </motion.button>
         </div>
 
         <div className="md:hidden flex items-center gap-2 shrink-0">
@@ -136,13 +137,14 @@ function Navbar({ navItems, activeSection, onNavigate, theme, onToggleTheme }) {
               {item.label}
             </button>
           ))}
-          <motion.a
-            href="mailto:rajandobariya6@gmail.com"
+          <motion.button
+            type="button"
+            onClick={() => handleNavClick('contact')}
             className="block w-full text-center px-4 py-3 bg-gradient-to-r from-[#ffbd13] to-[#ffde76] text-[#101017] rounded-lg font-semibold mt-3"
             whileTap={{ scale: 0.95 }}
           >
             Hire Me
-          </motion.a>
+          </motion.button>
         </div>
       </motion.div>
     </motion.nav>
