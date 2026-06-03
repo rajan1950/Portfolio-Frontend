@@ -131,7 +131,7 @@ export const portfolioData = {
       institution: 'Gujarat Technological University (GTU)',
       program: 'Bachelor of Engineering: Information Technology',
       years: '2022 - 2026',
-      details: 'CGPA: 	8.31 / 10',
+      details: 'CGPA: 	8.56 / 10',
     },
   ],
 
