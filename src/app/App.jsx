@@ -16,8 +16,8 @@ import EnhancedFooter from '../sections/EnhancedFooter'
 function App() {
   const activeSection = useActiveSection(navItems)
   const [manualActiveSection, setManualActiveSection] = useState('')
-  const [projects, setProjects] = useState(portfolioData.projects)
-  const [skills, setSkills] = useState(portfolioData.skills)
+  const projects = portfolioData.projects
+  const skills = portfolioData.skills
   const [theme, setTheme] = useState(() => {
     if (typeof window === 'undefined') {
       return 'dark'

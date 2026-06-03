@@ -165,7 +165,7 @@ function EnhancedContactSection({ profile, data }) {
           {/* Contact Form */}
           <motion.div
             variants={itemVariants}
-            className="backdrop-blur-lg bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.15)] rounded-2xl p-8"
+            className="backdrop-blur-lg bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.15)] rounded-2xl p-6 sm:p-8"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Field */}

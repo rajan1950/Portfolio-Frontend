@@ -64,6 +64,7 @@ body {
     radial-gradient(circle at 85% 20%, #c07342 0%, transparent 35%),
     linear-gradient(110deg, var(--bg-left) 10%, var(--bg-center) 45%, var(--bg-right) 100%);
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 [data-theme='light'] body {
@@ -75,6 +76,14 @@ body {
 .app-shell {
   position: relative;
   overflow-x: clip;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
 }
 
 .glow {

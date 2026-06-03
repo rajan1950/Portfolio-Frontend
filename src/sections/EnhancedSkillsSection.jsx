@@ -122,11 +122,11 @@ function EnhancedSkillsSection({ skills }) {
               <motion.div
                 key={idx}
                 variants={cardVariants}
-                className={`relative group p-8 rounded-2xl backdrop-blur-lg bg-gradient-to-br ${category.gradient} border ${category.borderColor} hover:border-[#ffbd13]/50 transition-all duration-500`}
+                className={`relative group p-6 sm:p-8 rounded-2xl backdrop-blur-lg bg-gradient-to-br ${category.gradient} border ${category.borderColor} hover:border-[#ffbd13]/50 transition-all duration-500`}
                 whileHover={{ y: -10, scale: 1.02 }}
               >
                 <div className="relative z-10">
-                  <Icon className="text-4xl text-[#ffbd13] mb-4" />
+                  <Icon className="text-3xl sm:text-4xl text-[#ffbd13] mb-4" />
                   <h3 className="text-2xl font-bold text-[#f8f7f5] mb-2">{category.title}</h3>
 
                   {/* Skills List with Progress Bars */}
