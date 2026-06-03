@@ -8,15 +8,21 @@ export function useActiveSection(items) {
       (entries) => {
         const visible = entries
           .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+          .sort((a, b) => {
+            if (b.intersectionRatio !== a.intersectionRatio) {
+              return b.intersectionRatio - a.intersectionRatio
+            }
+
+            return Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top)
+          })
 
         if (visible.length > 0) {
           setActiveSection(visible[0].target.id)
         }
       },
       {
-        rootMargin: '-20% 0px -50% 0px',
-        threshold: [0.25, 0.5, 0.75],
+        rootMargin: '-35% 0px -45% 0px',
+        threshold: [0, 0.25, 0.6],
       },
     )
 

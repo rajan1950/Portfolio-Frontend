@@ -100,7 +100,7 @@ function Navbar({ navItems, activeSection, onNavigate, theme, onToggleTheme }) {
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />
           <motion.button
             type="button"
-            className="p-2 rounded-lg hover:bg-[rgba(255,255,255,0.1)]"
+            className="h-10 w-10 rounded-lg flex items-center justify-center border border-transparent hover:border-[rgba(255,255,255,0.2)] hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300"
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             whileTap={{ scale: 0.95 }}
             aria-expanded={isMobileMenuOpen}

@@ -12,7 +12,7 @@ function EnhancedFooter({ data }) {
 
   const socialLinks = [
     { icon: FaLinkedin, url: data?.profile?.linkedin, label: 'LinkedIn' },
-    { icon: FaGithub, url: data?.links?.github, label: 'GitHub' },
+    { icon: FaGithub, url: data?.links?.github, label: 'GitHub', isPrimary: true },
     { icon: FaInstagram, url: data?.links?.instagram, label: 'Instagram' },
   ]
 
@@ -32,8 +32,8 @@ function EnhancedFooter({ data }) {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#ffbd13] to-[#ffde76] rounded-lg flex items-center justify-center shadow-lg shadow-[rgba(255,189,19,0.3)]">
-                <span className="text-sm font-bold text-[#101017]">RD</span>
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center shadow-lg shadow-[rgba(255,189,19,0.3)]">
+                <img src="/logo-r.svg" alt="Rajan logo" className="w-10 h-10" />
               </div>
               <span className="text-lg font-bold text-[#f8f7f5]">Rajan Dobariya</span>
             </div>
@@ -76,7 +76,10 @@ function EnhancedFooter({ data }) {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-lg bg-[rgba(255,255,255,0.08)] text-[#f8f7f5] hover:text-[#ffbd13] hover:bg-[rgba(255,189,19,0.1)] border border-[rgba(255,255,255,0.15)] hover:border-[#ffbd13]/50 transition-all duration-300"
+                    aria-label={social.label}
+                    className={`p-3 rounded-lg bg-[rgba(255,255,255,0.1)] text-[#f8f7f5] border transition-all duration-300 hover:text-[#ffbd13] hover:bg-[rgba(255,189,19,0.12)] hover:border-[#ffbd13] hover:shadow-lg hover:shadow-[rgba(255,189,19,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffbd13]/60 ${
+                      social.isPrimary ? 'border-[#ffbd13]/70 text-[#ffbd13]' : 'border-[rgba(255,255,255,0.2)]'
+                    }`}
                     whileHover={{ scale: 1.2, y: -3 }}
                     whileTap={{ scale: 0.9 }}
                   >

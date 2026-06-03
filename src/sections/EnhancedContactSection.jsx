@@ -55,7 +55,7 @@ function EnhancedContactSection({ profile, data }) {
 
   const socialLinks = [
     { icon: FaLinkedin, url: profile.linkedin, label: 'LinkedIn' },
-    { icon: FaGithub, url: data?.links?.github, label: 'GitHub' },
+    { icon: FaGithub, url: data?.links?.github, label: 'GitHub', isPrimary: true },
     { icon: FaInstagram, url: data?.links?.instagram, label: 'Instagram' },
   ]
 
@@ -138,7 +138,7 @@ function EnhancedContactSection({ profile, data }) {
             {/* Social Links */}
             <div>
               <h4 className="text-lg font-semibold text-[#f8f7f5] mb-4">Follow Me</h4>
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-4">
                 {socialLinks.map((social, idx) => {
                   const Icon = social.icon
                   return (
@@ -147,11 +147,14 @@ function EnhancedContactSection({ profile, data }) {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-4 rounded-lg bg-gradient-to-br from-[rgba(255,189,19,0.15)] to-[rgba(255,189,19,0.05)] border border-[rgba(255,189,19,0.3)] hover:border-[#ffbd13] hover:bg-[rgba(255,189,19,0.2)] transition-all duration-300"
-                      whileHover={{ scale: 1.2, y: -5 }}
+                      aria-label={social.label}
+                      className={`p-3 rounded-lg bg-[rgba(255,255,255,0.1)] text-[#f8f7f5] border transition-all duration-300 hover:text-[#ffbd13] hover:bg-[rgba(255,189,19,0.12)] hover:border-[#ffbd13] hover:shadow-lg hover:shadow-[rgba(255,189,19,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffbd13]/60 ${
+                        social.isPrimary ? 'border-[#ffbd13]/70 text-[#ffbd13]' : 'border-[rgba(255,255,255,0.2)]'
+                      }`}
+                      whileHover={{ scale: 1.2, y: -3 }}
                       whileTap={{ scale: 0.9 }}
                     >
-                      <Icon className="w-6 h-6 text-[#ffbd13]" />
+                      <Icon className="w-5 h-5" />
                     </motion.a>
                   )
                 })}

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FiBriefcase, FiBook } from 'react-icons/fi'
+import { FaBriefcase, FaCertificate, FaGraduationCap } from 'react-icons/fa'
 
 function EnhancedExperienceSection({ experience, education, certificates }) {
   const containerVariants = {
@@ -22,30 +22,30 @@ function EnhancedExperienceSection({ experience, education, certificates }) {
     },
   }
 
-  const TimelineItem = ({ icon: Icon, title, company, duration, summary, type = 'experience' }) => (
-    <motion.div
-      variants={itemVariants}
-      className="relative pl-8 pb-8"
-    >
+  const TimelineItem = ({ icon: Icon, title, subtitle, meta, summary }) => (
+      <motion.div
+        variants={itemVariants}
+        className="relative pl-12 pb-8"
+      >
       {/* Timeline dot */}
       <motion.div
-        className="absolute left-0 top-0 w-4 h-4 rounded-full bg-gradient-to-r from-[#ffbd13] to-[#ffde76] shadow-lg shadow-[rgba(255,189,19,0.4)]"
+        className="absolute left-5 top-7 w-3.5 h-3.5 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#ffbd13] to-[#ffde76] shadow-lg shadow-[rgba(255,189,19,0.4)] z-10"
         whileHover={{ scale: 1.3 }}
       />
 
       {/* Timeline card */}
       <motion.div
-        className="backdrop-blur-lg bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.15)] rounded-xl p-6 hover:border-[#ffbd13]/50 transition-all duration-300 group"
+        className="backdrop-blur-lg bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.15)] rounded-xl p-6 hover:border-[#ffbd13]/50 transition-all duration-300 group relative z-10"
         whileHover={{ x: 10 }}
       >
         <div className="flex items-start gap-3 mb-3">
           <Icon className="w-5 h-5 text-[#ffbd13] mt-1 flex-shrink-0" />
           <div>
             <h3 className="text-lg font-bold text-[#f8f7f5]">{title}</h3>
-            <p className="text-[#ffbd13] text-sm font-semibold">{company}</p>
+            {subtitle && <p className="text-[#ffbd13] text-sm font-semibold">{subtitle}</p>}
           </div>
         </div>
-        <p className="text-xs text-[#d7d3cc] mb-3">{duration}</p>
+        {meta && <p className="text-xs text-[#d7d3cc] mb-3">{meta}</p>}
         {summary && <p className="text-sm text-[#d7d3cc] leading-relaxed">{summary}</p>}
       </motion.div>
     </motion.div>
@@ -81,25 +81,26 @@ function EnhancedExperienceSection({ experience, education, certificates }) {
           viewport={{ once: true, amount: 0.2 }}
         >
           {/* Vertical line */}
-          <div className="absolute left-2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#ffbd13] to-[rgba(255,189,19,0.2)]" />
+          <div className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-[#ffbd13] to-[rgba(255,189,19,0.2)] z-0" />
 
           {/* Experience Section */}
           {(experience && experience.length > 0) && (
             <div className="mb-12">
-              <h3 className="text-2xl font-bold text-[#f8f7f5] mb-8 flex items-center gap-3">
-                <FiBriefcase className="w-6 h-6 text-[#ffbd13]" />
+              <h3 className="text-2xl font-bold text-[#f8f7f5] mb-8 flex items-center gap-3 leading-none pl-12 relative z-10">
+                <span className="w-10 h-10 rounded-xl bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.15)] flex items-center justify-center shadow-lg shadow-[rgba(255,189,19,0.2)]">
+                  <FaBriefcase className="w-6 h-6 text-[#ffbd13]" />
+                </span>
                 Experience
               </h3>
               <div>
                 {experience.map((item, idx) => (
                   <TimelineItem
                     key={idx}
-                    icon={FiBriefcase}
+                    icon={FaBriefcase}
                     title={item.role}
-                    company={item.company}
-                    duration={item.duration}
+                    subtitle={item.company}
+                    meta={item.duration}
                     summary={item.summary}
-                    type="experience"
                   />
                 ))}
               </div>
@@ -109,20 +110,21 @@ function EnhancedExperienceSection({ experience, education, certificates }) {
           {/* Education Section */}
           {(education && education.length > 0) && (
             <div className="mb-12">
-              <h3 className="text-2xl font-bold text-[#f8f7f5] mb-8 flex items-center gap-3">
-                <FiBook className="w-6 h-6 text-[#ffbd13]" />
+              <h3 className="text-2xl font-bold text-[#f8f7f5] mb-8 flex items-center gap-3 leading-none pl-12 relative z-10">
+                <span className="w-10 h-10 rounded-xl bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.15)] flex items-center justify-center shadow-lg shadow-[rgba(255,189,19,0.2)]">
+                  <FaGraduationCap className="w-6 h-6 text-[#ffbd13]" />
+                </span>
                 Education
               </h3>
               <div>
                 {education.map((item, idx) => (
                   <TimelineItem
                     key={idx}
-                    icon={FiBook}
+                    icon={FaGraduationCap}
                     title={item.program}
-                    company={item.institution}
-                    duration={item.years}
+                    subtitle={item.institution}
+                    meta={item.years}
                     summary={item.details}
-                    type="education"
                   />
                 ))}
               </div>
@@ -132,30 +134,24 @@ function EnhancedExperienceSection({ experience, education, certificates }) {
           {/* Certificates Section */}
           {(certificates && certificates.length > 0) && (
             <div>
-              <h3 className="text-2xl font-bold text-[#f8f7f5] mb-8 flex items-center gap-3">
-                <FiBriefcase className="w-6 h-6 text-[#ffbd13]" />
+              <h3 className="text-2xl font-bold text-[#f8f7f5] mb-8 flex items-center gap-3 leading-none pl-12 relative z-10">
+                <span className="w-10 h-10 rounded-xl bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.15)] flex items-center justify-center shadow-lg shadow-[rgba(255,189,19,0.2)]">
+                  <FaCertificate className="w-6 h-6 text-[#ffbd13]" />
+                </span>
                 Certifications
               </h3>
-              <div className="space-y-4">
+              <div>
                 {certificates.map((cert, idx) => {
                   const certTitle = typeof cert === 'string' ? cert : cert.title
                   const certProvider = typeof cert === 'string' ? '' : cert.provider
 
                   return (
-                    <motion.div
+                    <TimelineItem
                       key={idx}
-                      variants={itemVariants}
-                      className="pl-8 relative"
-                    >
-                      <motion.div
-                        className="absolute left-0 top-1 w-3 h-3 rounded-full bg-[#ffbd13]"
-                        whileHover={{ scale: 1.5 }}
-                      />
-                      <div className="backdrop-blur-lg bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.15)] rounded-lg p-4">
-                        <p className="text-base font-semibold text-[#f8f7f5]">{certTitle}</p>
-                        {certProvider && <p className="text-sm text-[#ffbd13]">{certProvider}</p>}
-                      </div>
-                    </motion.div>
+                      icon={FaCertificate}
+                      title={certTitle}
+                      subtitle={certProvider}
+                    />
                   )
                 })}
               </div>

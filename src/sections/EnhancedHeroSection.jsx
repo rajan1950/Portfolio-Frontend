@@ -98,8 +98,8 @@ function EnhancedHeroSection({ profile, data }) {
               {profile.name}
             </span>
           </h1>
-          <div className="h-12 sm:h-14 md:h-16 mb-6">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#ffbd13] min-h-[2.5rem]">
+          <div className="min-h-[2.5rem] sm:min-h-[3rem] md:min-h-[3.5rem] mb-6 flex items-center justify-center">
+            <p className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#ffbd13] leading-tight">
               {displayedText}
               <motion.span
                 animate={{ opacity: [1, 0] }}
@@ -148,11 +148,11 @@ function EnhancedHeroSection({ profile, data }) {
         {/* Social Links */}
         <motion.div
           variants={itemVariants}
-          className="flex justify-center gap-4 mb-12"
+          className="flex flex-wrap justify-center gap-4 mb-12"
         >
           {[
             { icon: FaLinkedin, url: data?.profile?.linkedin, label: 'LinkedIn' },
-            { icon: FaGithub, url: data?.links?.github, label: 'GitHub' },
+            { icon: FaGithub, url: data?.links?.github, label: 'GitHub', isPrimary: true },
             { icon: FaInstagram, url: data?.links?.instagram, label: 'Instagram' },
           ].map((social, idx) => {
             const Icon = social.icon
@@ -162,7 +162,10 @@ function EnhancedHeroSection({ profile, data }) {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-lg bg-[rgba(255,255,255,0.1)] text-[#f8f7f5] hover:text-[#ffbd13] hover:bg-[rgba(255,189,19,0.1)] border border-[rgba(255,255,255,0.2)] hover:border-[#ffbd13] transition-all duration-300"
+                aria-label={social.label}
+                className={`p-3 rounded-lg bg-[rgba(255,255,255,0.1)] text-[#f8f7f5] border transition-all duration-300 hover:text-[#ffbd13] hover:bg-[rgba(255,189,19,0.12)] hover:border-[#ffbd13] hover:shadow-lg hover:shadow-[rgba(255,189,19,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffbd13]/60 ${
+                  social.isPrimary ? 'border-[#ffbd13]/70 text-[#ffbd13]' : 'border-[rgba(255,255,255,0.2)]'
+                }`}
                 whileHover={{ scale: 1.2, y: -3 }}
                 whileTap={{ scale: 0.9 }}
               >

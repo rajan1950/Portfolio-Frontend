@@ -1,10 +1,8 @@
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import { FiCode, FiHeart, FiMail } from 'react-icons/fi'
-import { FaRocket, FaGithub } from 'react-icons/fa'
-import { MdEmail } from 'react-icons/md'
+import { FaRocket, FaGithub, FaLinkedin } from 'react-icons/fa'
 
-function EnhancedAboutSection({ profile, summary }) {
+function EnhancedAboutSection({ profile, summary, data }) {
   const features = [
     {
       icon: FiCode,
@@ -114,27 +112,30 @@ function EnhancedAboutSection({ profile, summary }) {
               )}
 
               {/* Social Icons */}
-              <div className="flex gap-4 mt-8">
-                <Link
-                  to="#"
-                  className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 hover:border-[#ffbd13] hover:text-[#ffbd13] transition-all duration-300"
-                >
-                  <FaGithub className="text-xl" />
-                </Link>
-
-                <Link
-                  to="#"
-                  className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 hover:border-[#ffbd13] hover:text-[#ffbd13] transition-all duration-300"
-                >
-                  <FiMail className="text-xl" />
-                </Link>
-
-                <Link
-                  to="#"
-                  className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 hover:border-[#ffbd13] hover:text-[#ffbd13] transition-all duration-300"
-                >
-                  <MdEmail className="text-xl" />
-                </Link>
+              <div className="flex flex-wrap gap-4 mt-8">
+                {[
+                  { icon: FaGithub, url: data?.links?.github, label: 'GitHub' },
+                  { icon: FaLinkedin, url: data?.links?.linkedin || data?.profile?.linkedin, label: 'LinkedIn' },
+                  { icon: FiMail, url: profile?.email ? `mailto:${profile.email}` : undefined, label: 'Email' },
+                ]
+                  .filter((social) => Boolean(social.url))
+                  .map((social, idx) => {
+                  const Icon = social.icon
+                  return (
+                    <motion.a
+                      key={idx}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      className="p-3 rounded-lg bg-[rgba(255,255,255,0.1)] text-[#f8f7f5] border border-[rgba(255,255,255,0.2)] hover:text-[#ffbd13] hover:bg-[rgba(255,189,19,0.12)] hover:border-[#ffbd13] hover:shadow-lg hover:shadow-[rgba(255,189,19,0.35)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffbd13]/60"
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </motion.a>
+                  )
+                })}
               </div>
             </div>
           </motion.div>

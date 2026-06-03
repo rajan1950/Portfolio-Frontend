@@ -82,7 +82,7 @@ function App() {
 
       <main>
         <EnhancedHeroSection profile={portfolioData.profile} data={portfolioData} />
-        <EnhancedAboutSection profile={portfolioData.profile} summary={portfolioData.summary} />
+        <EnhancedAboutSection profile={portfolioData.profile} summary={portfolioData.summary} data={portfolioData} />
         <EnhancedSkillsSection skills={skills} />
         <EnhancedProjectsSection projects={projects} />
         <EnhancedExperienceSection
