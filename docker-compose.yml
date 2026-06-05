@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  rajanportfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    networks:
+      - internal_network
+
+networks:
+  internal_network:
+    external: true
