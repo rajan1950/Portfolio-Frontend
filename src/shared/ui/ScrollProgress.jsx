@@ -9,9 +9,12 @@ function ScrollProgress() {
       const scrollTop = window.scrollY
       const docHeight = document.documentElement.scrollHeight - window.innerHeight
       const scrolled = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
-      setProgress(scrolled)
+      setProgress((currentProgress) =>
+        currentProgress === scrolled ? currentProgress : scrolled,
+      )
     }
 
+    handleScroll()
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])

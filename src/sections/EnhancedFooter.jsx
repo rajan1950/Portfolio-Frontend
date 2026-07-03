@@ -24,7 +24,7 @@ function EnhancedFooter({ data }) {
         {/* Footer Content */}
         <motion.div
           className="grid md:grid-cols-3 gap-12 mb-12"
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
@@ -105,7 +105,7 @@ function EnhancedFooter({ data }) {
         {/* Bottom Section */}
         <motion.div
           className="flex flex-col sm:flex-row items-center justify-between gap-6"
-          initial={{ opacity: 0 }}
+          initial={false}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}

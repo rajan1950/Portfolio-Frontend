@@ -17,7 +17,10 @@ export function useActiveSection(items) {
           })
 
         if (visible.length > 0) {
-          setActiveSection(visible[0].target.id)
+          const nextActiveSection = visible[0].target.id
+          setActiveSection((currentActiveSection) =>
+            currentActiveSection === nextActiveSection ? currentActiveSection : nextActiveSection,
+          )
         }
       },
       {

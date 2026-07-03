@@ -9,7 +9,7 @@ export const portfolioData = {
     email: 'rajandobariya6@gmail.com',
     phone: '+91 8320161950',
     linkedin: 'https://www.linkedin.com/in/dobariya-rajan-980b13328/',
-    resumeUrl: '/resume.pdf',
+    // resumeUrl: '/resume.pdf',
   },
 
   summary: {

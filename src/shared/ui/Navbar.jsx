@@ -9,9 +9,13 @@ function Navbar({ navItems, activeSection, onNavigate, theme, onToggleTheme }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      const nextIsScrolled = window.scrollY > 50
+      setIsScrolled((currentIsScrolled) =>
+        currentIsScrolled === nextIsScrolled ? currentIsScrolled : nextIsScrolled,
+      )
     }
 
+    handleScroll()
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])

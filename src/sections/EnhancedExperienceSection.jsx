@@ -57,7 +57,7 @@ function EnhancedExperienceSection({ experience, education, certificates }) {
         {/* Section Header */}
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
@@ -76,7 +76,7 @@ function EnhancedExperienceSection({ experience, education, certificates }) {
         <motion.div
           className="relative"
           variants={containerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >

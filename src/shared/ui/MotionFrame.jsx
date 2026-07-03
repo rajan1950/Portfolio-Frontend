@@ -34,7 +34,7 @@ export function MotionSection({ children, className, ...props }) {
   return (
     <motion.section
       className={className}
-      initial={shouldReduceMotion ? false : 'hidden'}
+      initial={false}
       whileInView={shouldReduceMotion ? undefined : 'visible'}
       viewport={{ once: true, amount: 0.28 }}
       variants={sectionVariants}
@@ -52,7 +52,7 @@ export function MotionItem({ children, className, as = 'div', delay = 0, ...prop
   return (
     <Component
       className={className}
-      initial={shouldReduceMotion ? false : 'hidden'}
+      initial={false}
       whileInView={shouldReduceMotion ? undefined : 'visible'}
       viewport={{ once: true, amount: 0.35 }}
       variants={{

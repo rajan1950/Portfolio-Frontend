@@ -92,7 +92,7 @@ function EnhancedSkillsSection({ skills }) {
         {/* Section Header */}
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
@@ -111,7 +111,7 @@ function EnhancedSkillsSection({ skills }) {
         <motion.div
           className="grid md:grid-cols-3 gap-8 mb-12"
           variants={containerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
@@ -159,7 +159,7 @@ function EnhancedSkillsSection({ skills }) {
         {/* Tools Section */}
         <motion.div
           className="mt-20"
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
