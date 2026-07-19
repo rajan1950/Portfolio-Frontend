@@ -3,6 +3,12 @@ import { FiCode, FiHeart, FiMail } from 'react-icons/fi'
 import { FaRocket, FaGithub, FaLinkedin } from 'react-icons/fa'
 
 function EnhancedAboutSection({ profile, summary, data }) {
+  const achievements = [
+    { label: 'Projects', value: Array.isArray(data?.projects) ? data.projects.length : 0 },
+    { label: 'Role', value: profile?.role || 'Frontend Developer' },
+    { label: 'Location', value: profile?.location || 'India' },
+  ]
+
   const features = [
     {
       icon: FiCode,
@@ -63,25 +69,25 @@ function EnhancedAboutSection({ profile, summary, data }) {
           viewport={{ once: true }}
         >
           <p className="uppercase tracking-[0.3em] text-[#ffbd13] text-sm font-semibold mb-4">
-            About Me
+            About
           </p>
 
-          <h2 className="text-4xl md:text-6xl font-black text-[#f8f7f5] mb-6">
-            Passionate{' '}
+          <h2 className="text-4xl md:text-6xl font-black text-[#f8f7f5] mb-5 leading-tight">
+            Building products{' '}
             <span className="bg-gradient-to-r from-[#ffbd13] to-[#ffde76] bg-clip-text text-transparent">
-              Developer
+              with care
             </span>
           </h2>
 
           <p className="text-lg text-[#d7d3cc] max-w-2xl mx-auto leading-relaxed">
-            I build modern, scalable, and high-performance web applications
-            with clean UI, smooth UX, and optimized code architecture.
+            I build modern, scalable web applications with strong UX, thoughtful
+            architecture, and a focus on practical outcomes.
           </p>
         </motion.div>
 
         {/* Main Content */}
         <motion.div
-          className="grid lg:grid-cols-2 gap-12 items-center mb-20"
+          className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-12 items-start mb-16"
           variants={containerVariants}
           initial={false}
           whileInView="visible"
@@ -89,30 +95,39 @@ function EnhancedAboutSection({ profile, summary, data }) {
         >
           {/* Left Content */}
           <motion.div variants={itemVariants}>
-            <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl">
-              <h3 className="text-3xl font-bold text-[#f8f7f5] mb-6">
+            <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl">
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#f8f7f5] mb-4">
                 {profile?.role || 'Frontend Developer'}
               </h3>
 
-              <p className="text-[#d7d3cc] leading-relaxed text-lg mb-6">
+              <p className="text-[#d7d3cc] leading-relaxed text-base sm:text-lg mb-6">
                 {profile?.tagline ||
                   'I create responsive, modern, and user-focused web experiences using React, Tailwind CSS, Node.js, and modern frontend technologies.'}
               </p>
 
               {summary?.intro && (
-                <p className="text-[#d7d3cc] leading-relaxed mb-6">
+                <p className="text-[#d7d3cc] leading-relaxed mb-6 max-w-xl">
                   {summary.intro}
                 </p>
               )}
 
               {summary?.quote && (
-                <blockquote className="border-l-4 border-[#ffbd13] pl-5 italic text-[#ffbd13] text-lg">
+                <blockquote className="rounded-2xl border border-[rgba(255,189,19,0.18)] bg-[rgba(255,189,19,0.08)] px-5 py-4 italic text-[#ffde76] text-base sm:text-lg leading-relaxed">
                   "{summary.quote}"
                 </blockquote>
               )}
 
+              <div className="grid sm:grid-cols-3 gap-3 mt-6">
+                {achievements.map((item) => (
+                  <div key={item.label} className="rounded-2xl border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.04)] p-4">
+                    <p className="text-xs uppercase tracking-[0.24em] text-[#ffbd13] mb-2">{item.label}</p>
+                    <p className="text-[#f8f7f5] text-lg font-semibold leading-snug break-words">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+
               {/* Social Icons */}
-              <div className="flex flex-wrap gap-4 mt-8">
+              <div className="flex flex-wrap gap-4 mt-6">
                 {[
                   { icon: FaGithub, url: data?.links?.github, label: 'GitHub' },
                   { icon: FaLinkedin, url: data?.links?.linkedin || data?.profile?.linkedin, label: 'LinkedIn' },
@@ -143,7 +158,7 @@ function EnhancedAboutSection({ profile, summary, data }) {
           {/* Right Features */}
           <motion.div
             variants={itemVariants}
-            className="space-y-6"
+            className="space-y-4"
           >
             {features.map((feature, idx) => {
               const Icon = feature.icon
@@ -156,21 +171,21 @@ function EnhancedAboutSection({ profile, summary, data }) {
                     scale: 1.02,
                   }}
                   transition={{ duration: 0.3 }}
-                  className="group relative overflow-hidden backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 hover:border-[#ffbd13]/40 transition-all duration-500"
+                  className="group relative overflow-hidden backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-5 sm:p-6 hover:border-[#ffbd13]/40 transition-all duration-500"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-[#ffbd13]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   <div className="relative z-10 flex items-start gap-5">
-                    <div className="w-16 h-16 rounded-2xl bg-[#ffbd13]/10 border border-[#ffbd13]/20 flex items-center justify-center">
-                      <Icon className="text-3xl text-[#ffbd13]" />
+                      <div className="w-14 h-14 rounded-2xl bg-[#ffbd13]/10 border border-[#ffbd13]/20 flex items-center justify-center shrink-0">
+                        <Icon className="text-2xl text-[#ffbd13]" />
                     </div>
 
                     <div>
-                      <h4 className="text-2xl font-bold text-[#f8f7f5] mb-2">
+                        <h4 className="text-xl font-bold text-[#f8f7f5] mb-2">
                         {feature.title}
                       </h4>
 
-                      <p className="text-[#d7d3cc] leading-relaxed">
+                        <p className="text-[#d7d3cc] leading-relaxed text-sm sm:text-base">
                         {feature.description}
                       </p>
                     </div>
