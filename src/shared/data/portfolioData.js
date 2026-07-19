@@ -25,6 +25,7 @@ export const portfolioData = {
       title: 'Car Scout',
       subtitle: 'Vehicle search & comparison platform',
       date: '2026-04',
+      image: '/images/car-scout.png',
       description:
         'Car Scout is a marketplace-style web app that lets users search, filter, and compare cars from multiple dealers. Includes saved searches and comparison tables.',
       objective: 'Provide a smooth car discovery experience with rich filtering and comparisons.',
@@ -37,6 +38,7 @@ export const portfolioData = {
       title: 'R-Square',
       subtitle: 'Real-estate listings & analytics',
       date: '2025-09',
+      image: '/images/r-square.png',
       description:
         'R-Square aggregates property listings and provides simple analytics for buyers and agents, with map integrations and saved favourites.',
       objective: 'Help users discover and evaluate properties quickly.',
@@ -49,6 +51,7 @@ export const portfolioData = {
       title: 'Portfolio Website',
       subtitle: 'This site — built with React, Vite and Tailwind',
       date: '2026-05',
+      image: '/images/portfolio-home.png',
       description:
         'My personal portfolio and CV site showcasing projects, experience, and contact information. Built with performance and accessibility in mind.',
       objective: 'Showcase professional experience and selected projects.',
